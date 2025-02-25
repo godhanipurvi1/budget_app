@@ -1,8 +1,30 @@
-![Screenshot 2025-02-25 160352](https://github.com/user-attachments/assets/432af5d3-60be-4fbf-ad8d-118c03204ccc)![Screenshot 2025-02-25 160417](https://github.com/user-attachments/assets/1ce50298-1dd8-4c88-a6e2-5f0062b50e0c).
-![Screenshot 2025-02-25 160343](https://github.com/user-attachments/assets/bcea020a-3186-4cc8-846f-db361b81cd7d)
-![Screenshot 2025-02-25 160336](https://github.com/user-attachments/assets/2ada27c6-0be2-41c5-9909-932024a899c2)
-![Screenshot 2025-02-25 160322](https://github.com/user-attachments/assets/439cd005-0d91-402e-9d48-1fd19860ac68)
-![Screenshot 2025-02-25 160637](https://github.com/user-attachments/assets/16500fc8-a668-427d-b801-101a6e932021)
-![Screenshot 2025-02-25 160525](https://github.com/user-attachments/assets/7331c93e-f9cf-4f19-8e19-b0a4da569d2f)
-![Screenshot 2025-02-25 160511](https://github.com/user-attachments/assets/af3d6116-6667-4137-a2fe-4d15d8668f62)
-![Screenshot 2025-02-25 160505](https://github.com/user-attachments/assets/a1d192be-628b-4bda-94fb-5b929a279f7b)
+
+## Screenshots
+
+### Home Page
+<img src="https://github.com/user-attachments/assets/e2401dbe-2c47-454c-9faf-2eae32f4991a" width="300" height="600">
+
+### Feature 1
+<img src="https://github.com/user-attachments/assets/ef8fe9c1-e444-41f3-bc78-3fd18272aa5a" width="300" height="600">
+
+### Feature 2
+<img src="https://github.com/user-attachments/assets/40dd4050-b362-4b1f-9f1d-f6f0e1c2add1" width="300" height="600">
+
+### Feature 3
+<img src="https://github.com/user-attachments/assets/134fefd4-b8bc-449b-8571-923d24f0b21f" width="300" height="600">
+
+### Feature 4
+<img src="https://github.com/user-attachments/assets/4dd6d6e7-b512-453b-bba7-a97f8d44f016" width="300" height="600">
+
+### Feature 5
+<img src="https://github.com/user-attachments/assets/9cf9d1ae-9eaa-4ec3-9b4c-604c9c0e68d4" width="300" height="600">
+
+### Feature 6
+<img src="https://github.com/user-attachments/assets/885b0eec-be4a-4b69-981e-6e91b3267051" width="300" height="600">
+
+### Feature 7
+<img src="https://github.com/user-attachments/assets/2d0ef137-57e4-448c-9aaf-c12e21e3f098" width="300" height="600">
+
+### Feature 8
+<img src="https://github.com/user-attachments/assets/788b95dd-b8e8-4627-8b37-b2b1f219e2d8" width="300" height="600">
+
