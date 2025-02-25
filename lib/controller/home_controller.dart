@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../components/all_categories_page.dart';
-import '../components/all_spending_page.dart';
-import '../components/categories_page.dart';
-import '../components/spending_page.dart';
+import '../components/all_category.dart';
+import '../components/all_spending.dart';
+import '../components/category.dart';
+import '../components/spending.dart';
 
 class HomeController extends GetxController {
   int? sIndex;
@@ -62,9 +62,9 @@ class HomeController extends GetxController {
   ];
 
   List<Widget> pages = [
-    const SpendingForm(),
+    const SpendingComponents(),
+    const CategoryComponents(),
     const AllSpendingComponents(),
     const AllCategoryComponents(),
-    const AllCategoriesPage(),
   ];
 }

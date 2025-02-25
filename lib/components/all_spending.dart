@@ -11,86 +11,85 @@ class AllSpendingComponents extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: DatabaseHelper.databaseHelper.fetchSpending(),
-      builder: (context, spendingSnapshot) {
-        if (spendingSnapshot.hasData) {
-          List<SpendingModel> spendingList = spendingSnapshot.data ?? [];
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List<SpendingModel> spendingData = snapshot.data ?? [];
 
           return ListView.builder(
-            itemCount: spendingList.length,
+            itemCount: spendingData.length,
             itemBuilder: (context, index) {
-              var spendingItem = SpendingModel(
-                id: spendingList[index].id,
-                description: spendingList[index].description,
-                amount: spendingList[index].amount,
-                paymentMode: spendingList[index].paymentMode,
-                date: spendingList[index].date,
-                categoryId: spendingList[index].categoryId,
+              var data = SpendingModel(
+                id: spendingData[index].id,
+                description: spendingData[index].description,
+                amount: spendingData[index].amount,
+                paymentMode: spendingData[index].paymentMode,
+                date: spendingData[index].date,
+                categoryId: spendingData[index].categoryId,
               );
               return Container(
-                height: 200.h,
+                height: 235.h,
                 width: double.infinity,
-                margin: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.black87,
-                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(18),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 8,
+                      offset: Offset(0, 4), // Shadow position
+                    ),
+                  ],
                 ),
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      spendingList[index].description,
+                      spendingData[index].description,
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+                    SizedBox(height: 8.h),
                     Text(
-                      "₹ ${spendingList[index].amount}",
+                      "₹ ${spendingData[index].amount}",
                       style: TextStyle(
                         fontSize: 18.sp,
-                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+                    SizedBox(height: 8.h),
                     Row(
                       children: [
                         Text(
-                          "DATE : ",
+                          "DATE: ",
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
                           ),
                         ),
                         Text(
-                          spendingItem.date,
+                          data.date,
                           style: TextStyle(
                             fontSize: 16.sp,
-                            color: Colors.white,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+                    SizedBox(height: 12.h),
                     FutureBuilder(
                       future: DatabaseHelper.databaseHelper
-                          .fetchSingleCategory(id: spendingItem.categoryId),
-                      builder: (context, categorySnapshot) {
-                        if (categorySnapshot.hasData) {
-                          return (categorySnapshot.data != null)
-                              ? Text(
-                                  categorySnapshot.data!.name,
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                          .fetchSingleCategory(id: data.categoryId),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return snapshot.data != null
+                              ? Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: Text(
+                                    snapshot.data!.name,
+                                    style: const TextStyle(),
                                   ),
                                 )
                               : Container();
@@ -98,19 +97,17 @@ class AllSpendingComponents extends StatelessWidget {
                         return Container();
                       },
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+                    SizedBox(height: 10.h),
                     Row(
                       children: [
                         FutureBuilder(
                           future: DatabaseHelper.databaseHelper
-                              .fetchSingleCategory(id: spendingItem.categoryId),
-                          builder: (context, categorySnapshot) {
-                            if (categorySnapshot.hasData) {
-                              return (categorySnapshot.data != null)
+                              .fetchSingleCategory(id: data.categoryId),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return snapshot.data != null
                                   ? Image.memory(
-                                      categorySnapshot.data!.image,
+                                      snapshot.data!.image,
                                       height: 50,
                                     )
                                   : Container();
@@ -118,16 +115,16 @@ class AllSpendingComponents extends StatelessWidget {
                             return Container();
                           },
                         ),
-                        SizedBox(
-                          width: 20.w,
-                        ),
-                        ActionChip(
-                          backgroundColor:
-                              (spendingItem.paymentMode == 'online')
-                                  ? Colors.green
-                                  : Colors.yellow,
-                          label: Text(spendingItem.paymentMode),
-                        ),
+                        SizedBox(width: 16.w),
+                        // ActionChip(
+                        //   backgroundColor: data.mode == 'online'
+                        //       ? Colors.green
+                        //       : Colors.yellow,
+                        //   label: Text(
+                        //     data.mode,
+                        //     style: const TextStyle(color: Colors.white),
+                        //   ),
+                        // ),
                         const Spacer(),
                         IconButton(
                           onPressed: () {},
@@ -144,7 +141,7 @@ class AllSpendingComponents extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               );
