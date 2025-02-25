@@ -69,7 +69,6 @@ class DatabaseHelper {
     return await db?.rawInsert(query, args);
   }
 
-  // TODO: FETCH ALL RECORDS
   Future<List<CategoryModel>> fetchCategory() async {
     await initDB();
 
@@ -129,7 +128,6 @@ class DatabaseHelper {
         .toList();
   }
 
-  // TODO: UPDATE RECORD
   Future<int?> updateCategory({required CategoryModel model}) async {
     await initDB();
 
@@ -143,7 +141,6 @@ class DatabaseHelper {
     return await db?.rawUpdate(query, arg);
   }
 
-  // TODO: DELETE RECORD
   Future<int?> deleteCategory({required int id}) async {
     await initDB();
 

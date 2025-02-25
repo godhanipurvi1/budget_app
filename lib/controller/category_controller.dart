@@ -1,101 +1,59 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../helper/database_helper.dart';
-import '../model/category_model.dart';
-
 class CategoryController extends GetxController {
-  int? categoryIndex;
-  Future<List<CategoryModel>>? allCategory;
+  // Reactive variable to track selected category
+  RxInt sIndex = RxInt(-1);
 
-  void getCategoryIndex({required int index}) {
-    categoryIndex = index;
+  List<Map<String, String>> categories = [
+    {
+      "name": "entertainment",
+      "image": 'assets/01.png',
+    },
+    {
+      "name": "investments",
+      "image": 'assets/02.png',
+    },
+    {
+      "name": "gift",
+      "image": 'assets/03.png',
+    },
+    {
+      "name": "housing",
+      "image": 'assets/04.png',
+    },
+    {
+      "name": "insurance",
+      "image": 'assets/05.png',
+    },
+    {
+      "name": "food",
+      "image": 'assets/06.png',
+    },
+    {
+      "name": "healthcare",
+      "image": 'assets/08.png',
+    },
+    {
+      "name": "bills",
+      "image": 'assets/09.png',
+    },
+    {
+      "name": "shopping",
+      "image": 'assets/010.png',
+    },
+    {
+      "name": "transport",
+      "image": 'assets/011.png',
+    },
+  ];
 
-    update();
+  // Method to select an image by updating sIndex
+  void selectedImage(int index) {
+    sIndex.value = index;
   }
 
-  void assignDefaultVal() {
-    categoryIndex = null;
-
-    update();
-  }
-
-  // Insert Category Record
-  Future<void> addCategoryData({
-    required String name,
-    required Uint8List image,
-  }) async {
-    int? res = await DatabaseHelper.databaseHelper
-        .insertCategory(name: name, image: image, index: categoryIndex!);
-
-    if (res != null) {
-      Get.snackbar(
-        "Insert",
-        "$name category is inserted....$res",
-        colorText: Colors.white,
-        backgroundColor: Colors.green.shade300,
-      );
-    } else {
-      Get.snackbar(
-        "Failed",
-        "$name category is Insertion failed....",
-        colorText: Colors.white,
-        backgroundColor: Colors.red.shade300,
-      );
-    }
-  }
-
-  // Fetch Records
-  void fetchCategoryData() {
-    allCategory = DatabaseHelper.databaseHelper.fetchCategory();
-  }
-
-  void searchData({required String val}) {
-    allCategory = DatabaseHelper.databaseHelper.liveSearchCategory(search: val);
-
-    update();
-  }
-
-  Future<void> deleteCategory({required int id}) async {
-    int? res = await DatabaseHelper.databaseHelper.deleteCategory(id: id);
-
-    if (res != null) {
-      fetchCategoryData();
-      Get.snackbar(
-        'DELETED',
-        "Category is deleted...",
-        backgroundColor: Colors.green.withOpacity(0.7),
-      );
-    } else {
-      Get.snackbar(
-        'Failed',
-        "Category is deletion failed...",
-        backgroundColor: Colors.red.withOpacity(0.7),
-      );
-    }
-
-    update();
-  }
-
-  Future<void> updateCategoryData({required CategoryModel model}) async {
-    int? res = await DatabaseHelper.databaseHelper.updateCategory(model: model);
-
-    if (res != null) {
-      fetchCategoryData();
-      Get.snackbar(
-        'Update',
-        "Category is updated...",
-        backgroundColor: Colors.green.withOpacity(0.7),
-      );
-    } else {
-      Get.snackbar(
-        'Failed',
-        "Category is updation failed...",
-        backgroundColor: Colors.red.withOpacity(0.7),
-      );
-    }
-
-    update();
+  // Method to unselect the image
+  void unselectImage() {
+    sIndex.value = -1;
   }
 }

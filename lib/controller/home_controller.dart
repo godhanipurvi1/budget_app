@@ -13,11 +13,6 @@ class HomeController extends GetxController {
     update();
   }
 
-  void unselectImage() {
-    sIndex = null;
-    update();
-  }
-
   RxInt selectedIndex = 0.obs;
   void onItemTapped(int index) {
     selectedIndex.value = index;
